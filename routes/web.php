@@ -13,19 +13,30 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\PrincipalController::class,'principal']);
+Route::get('/', [\App\Http\Controllers\PrincipalController::class,'principal'])->name('site.index');
+Route::get('/sobre-nos', [\App\Http\Controllers\SobreNosController::class,'sobreNos'])->name('site.sobrenos');
+Route::get('/contato', [\App\Http\Controllers\ContatoController::class,'contato'])->name('site.contato');
+Route::get('/login', [\App\Http\Controllers\LoginController::class,'login'])->name('site.login');
 
-Route::get('/sobre-nos', [\App\Http\Controllers\SobreNosController::class,'sobreNos']);
+Route::prefix('/app')->group(function(){
+    Route::get('/clientes', [\App\Http\Controllers\ClientesController::class,'clientes'])->name('app.clientes');
+    Route::get('/fornecedores', [\App\Http\Controllers\FornecedoresController::class,'fornecedores'])->name('site.fornecedores');
+    Route::get('/produtos', [\App\Http\Controllers\ProdutosController::class,'produtos'])->name('site.produtos');
+});
 
-Route::get('/contato', [\App\Http\Controllers\ContatoController::class,'contato']);
-//nome, categoria, assunto, msg
+Route::get('/rota1', function(){
+    echo 'Rota 1';
+})->name('site.rota1');
 
+/*
+redirecionamento de rotas
+Route::redirect('/rota2', '/rota1');
+*/
 
-Route::get(
-    '/contato/{nome}/{categoria_id}', 
-    function(
-        string $nome = 'Nome Desconhecido', 
-        int $categoria_id = 1 //1 - Informação
-    ) {
-    echo "Estamos aqui: $nome - $categoria_id";
+Route::get('/rota2', function(){
+    return redirect()->route('site.rota1');
+})->name('site.rota2');
+
+Route::fallback(function() {
+    echo 'A rota acessada não existe. <a href="'.route('site.index').'">Clique aqui</a> para ir para a pagina inicial';
 });
