@@ -10,15 +10,19 @@
 
 {{-- @unless exeucta se o retorno for false --}}
 
-Fornecedor: {{ $fornecedores[0]['nome']}}
-<br>
-Status: {{ $fornecedores[0]['status']}}
-<br>
-@if( !($fornecedores[0]['status'] == 'S') )
-        Fornecedor inativo
-@endif
-<br>
-@unless($fornecedores[0]['status'] == 'S') <!-- se o retorno for false -->
-        Fornecedor inativoooo
-@endunless
-<br>
+@isset($fornecedores)
+        
+        @forelse($fornecedores as $indice => $fornecedor)
+                Fornecedor: {{ $fornecedor['nome']}}
+                @php $fornecedor[$indice]['nome'] = 'Outro nome' @endphp
+                <br>
+                Status: {{ $fornecedor['status']}}
+                <br>
+                CNPJ: {{ $fornecedor['cnpj'] ?? 'Dado nao foi preenchido'}}
+                <br>
+                Telefone: ({{ $fornecedor['ddd'] ?? '' }}) {{ $fornecedor['telefone'] ?? ''}}
+                <hr>
+        @empty
+                Não existem fornecedores cadastrados
+        @endforelse
+@endisset
