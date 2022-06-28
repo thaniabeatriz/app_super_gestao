@@ -20,8 +20,8 @@ Route::get('/login', [\App\Http\Controllers\LoginController::class,'login'])->na
 
 Route::prefix('/app')->group(function(){
     Route::get('/clientes', [\App\Http\Controllers\ClientesController::class,'clientes'])->name('app.clientes');
-    Route::get('/fornecedores', [\App\Http\Controllers\FornecedoresController::class,'fornecedores'])->name('site.fornecedores');
-    Route::get('/produtos', [\App\Http\Controllers\ProdutosController::class,'produtos'])->name('site.produtos');
+    Route::get('/fornecedores', [\App\Http\Controllers\FornecedoresController::class,'index'])->name('app.fornecedores');
+    Route::get('/produtos', [\App\Http\Controllers\ProdutosController::class,'produtos'])->name('app.produtos');
 });
 
 Route::get('/teste/{p1}/{p2}',[\App\Http\Controllers\TesteController::class,'teste'])->name('teste');

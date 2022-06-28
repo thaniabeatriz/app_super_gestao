@@ -1,1 +1,4 @@
-<h3>teste(view)</h3>
+teste 
+P1 = {{ $p1 }}
+<br/>
+P2 = {{ $p2 }}
