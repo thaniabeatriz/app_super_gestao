@@ -13,6 +13,8 @@
 @isset($fornecedores)
         
         @forelse($fornecedores as $indice => $fornecedor)
+                Iteração atual: {{ $loop->iteration}}
+                <br>
                 Fornecedor: {{ $fornecedor['nome']}}
                 @php $fornecedor[$indice]['nome'] = 'Outro nome' @endphp
                 <br>
