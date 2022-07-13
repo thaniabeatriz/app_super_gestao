@@ -1,0 +1,8 @@
+[0;1;32m●[0m mysql.service - LSB: Start and stop the mysql database server daemon
+     Loaded: loaded (/etc/init.d/mysql; generated)
+     Active: [0;1;32mactive (exited)[0m since Wed 2022-07-13 10:00:01 -04; 2s ago
+       Docs: man:systemd-sysv-generator(8)
+    Process: 80868 ExecStart=/etc/init.d/mysql start (code=exited, status=0/SUCCESS)
+
+jul 13 10:00:01 nuapri-13 systemd[1]: Starting LSB: Start and stop the mysql database server daemon...
+jul 13 10:00:01 nuapri-13 systemd[1]: Started LSB: Start and stop the mysql database server daemon.
